@@ -1,36 +1,121 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Data | basicScroll - にほんご。</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta property="og:title" content="Data | basicScroll - にほんご。"><meta property="og:url"><meta property="og:type" content="article"><link rel="icon" href="https://tr.you84815.space/basicscroll/favicon.ico"><link rel="stylesheet" href="./css/main.css"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-106478577-1', 'auto');</script></head><body><div id="container"><header><div class="icon"><a class="no-barba" href="https://tr.you84815.space/"><svg width="16" height="16"><rect width="16" height="16" fill="#e0e0e0"></rect></svg></a></div><div class="navi_toggle" onclick="toggleMenu()"><svg id="menu_close" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg><svg id="menu_open" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></div><div class="title">basicScroll - <a class="no-barba" href="https://tr.you84815.space/">にほんご。</a></div></header><div class="navi" id="navi"><ul class="menu"><li><a class="index" href="./index.html">Home</a></li><li><a class="introduction" href="./introduction.html">Introduction</a></li><li><a class="requirements" href="./requirements.html">Requirements</a></li><li><a class="setup" href="./setup.html">Setup</a></li><li><a class="usage" href="./usage.html">Usage</a></li><li><span onclick="toggleApi()">API</span><ul class="hidden" id="navi_api"><li><a href="./api/create.html">.create()</a></li></ul></li><li><span onclick="toggleInstanceApi()">Instance API</span><ul class="hidden" id="navi_instanceApi"><li><a href="./instance-api/start.html">.start()</a></li><li><a href="./instance-api/stop.html">.stop()</a></li><li><a href="./instance-api/destroy.html">.destroy()</a></li><li><a href="./instance-api/update.html">.update()</a></li><li><a href="./instance-api/calculate.html">.calculate()</a></li><li><a href="./instance-api/isActive.html">.isActive()</a></li><li><a href="./instance-api/getData.html">.getData()</a></li></ul></li><li><a class="data active" href="./data.html">Data</a><ul id="navi_data"><li><a href="./data.html#dom-element">DOM Element/Node</a></li><li><a href="./data.html#start-stop">開始＆停止位置</a></li><li><a href="./data.html#direct-mode">ダイレクトモード</a></li><li><a href="./data.html#window-size">ウィンドウサイズ変更の検知</a></li><li><a href="./data.html#callback">コールバック関数</a></li><li><a href="./data.html#props">Props</a></li><li><a href="./data.html#start-end">開始と終了の値</a></li><li><a href="./data.html#animation">アニメーションのイージング</a></li></ul></li><li><a class="tips" href="./tips.html">Tips</a></li></ul></div><div id="content"><div id="main"><div id="barba-wrapper"><div class="barba-container"><h1>Data</h1><div id="update_date"><span>更新日: 2018.11.08
-</span></div><p><code>data</code>オブジェクトには、以下のプロパティを指定することができます。</p><pre><code>{
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data | basicScroll - にほんご。</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="Data | basicScroll - にほんご。">
+    <meta property="og:url">
+    <meta property="og:type" content="article">
+    <link rel="icon" href="https://tr.you84815.space/basicscroll/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link id="theme_style" rel="stylesheet" type="text/css" href="">
+    <script id="srcTheme" src="./js/toggleTheme.js" data-dir="basicscroll"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-106478577-1', 'auto');
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div class="icon"><a class="no-barba" href="https://tr.you84815.space/">
+            <svg width="16" height="16">
+              <rect width="16" height="16" fill="#e0e0e0"></rect>
+            </svg></a></div>
+        <div class="navi_toggle" onclick="toggleMenu()">
+          <svg id="menu_close" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            <path d="M0 0h24v24H0z" fill="none"></path>
+          </svg>
+          <svg id="menu_open" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+          </svg>
+        </div>
+        <div class="title">basicScroll - <a class="no-barba" href="https://tr.you84815.space/">にほんご。</a></div><span id="toggleTheme">
+          <svg role="img" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"></path>
+          </svg></span>
+      </header>
+      <div class="navi" id="navi">
+        <ul class="menu">
+          <li><a class="index" href="./index.html">Home</a></li>
+          <li><a class="introduction" href="./introduction.html">Introduction</a></li>
+          <li><a class="requirements" href="./requirements.html">Requirements</a></li>
+          <li><a class="setup" href="./setup.html">Setup</a></li>
+          <li><a class="usage" href="./usage.html">Usage</a></li>
+          <li><span onclick="toggleApi()">API</span>
+            <ul class="hidden" id="navi_api">
+              <li><a href="./api/create.html">.create()</a></li>
+            </ul>
+          </li>
+          <li><span onclick="toggleInstanceApi()">Instance API</span>
+            <ul class="hidden" id="navi_instanceApi">
+              <li><a href="./instance-api/start.html">.start()</a></li>
+              <li><a href="./instance-api/stop.html">.stop()</a></li>
+              <li><a href="./instance-api/destroy.html">.destroy()</a></li>
+              <li><a href="./instance-api/update.html">.update()</a></li>
+              <li><a href="./instance-api/calculate.html">.calculate()</a></li>
+              <li><a href="./instance-api/isActive.html">.isActive()</a></li>
+              <li><a href="./instance-api/getData.html">.getData()</a></li>
+            </ul>
+          </li>
+          <li><a class="data active" href="./data.html">Data</a>
+            <ul id="navi_data">
+              <li><a href="./data.html#dom-element">DOM Element/Node</a></li>
+              <li><a href="./data.html#start-stop">開始＆停止位置</a></li>
+              <li><a href="./data.html#direct-mode">ダイレクトモード</a></li>
+              <li><a href="./data.html#window-size">ウィンドウサイズ変更の検知</a></li>
+              <li><a href="./data.html#callback">コールバック関数</a></li>
+              <li><a href="./data.html#props">Props</a></li>
+              <li><a href="./data.html#start-end">開始と終了の値</a></li>
+              <li><a href="./data.html#animation">アニメーションのイージング</a></li>
+            </ul>
+          </li>
+          <li><a class="tips" href="./tips.html">Tips</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <div id="main">
+          <div id="barba-wrapper">
+            <div class="barba-container">
+              <h1>Data</h1>
+              <div id="update_date"><span>更新日: 2018.11.08
+</span>
+              </div>
+              <p><code>data</code>オブジェクトには、以下のプロパティを指定することができます。</p>
+              <pre><code>{
   <span class="hljs-comment">/*
    * DOM Element/Node.
    */</span>
-  elem: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">elem</span>: <span class="hljs-literal">null</span>,
   <span class="hljs-comment">/*
    * 開始＆停止位置
    */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-literal">null</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-literal">null</span>,
   <span class="hljs-comment">/*
    * ダイレクトモード
    */</span>
-  direct: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">direct</span>: <span class="hljs-literal">false</span>,
   <span class="hljs-comment">/*
    * ウィンドウサイズ変更の検知
    */</span>
-  track: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">track</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-comment">/*
    * コールバック関数
    */</span>
-  inside: <span class="hljs-function">(<span class="hljs-params">instance, percentage, props</span>) =&gt;</span> {},
+  <span class="hljs-attr">inside</span>: <span class="hljs-function">(<span class="hljs-params">instance, percentage, props</span>) =&gt;</span> {},
   <span class="hljs-attr">outside</span>: <span class="hljs-function">(<span class="hljs-params">instance, percentage, props</span>) =&gt;</span> {},
   <span class="hljs-comment">/*
    * Props.
    */</span>
-  props: {
+  <span class="hljs-attr">props</span>: {
     <span class="hljs-comment">/*
      * プロパティ名、CSSカスタムプロパティ
      */</span>
@@ -38,59 +123,146 @@ ga('create', 'UA-106478577-1', 'auto');</script></head><body><div id="container"
       <span class="hljs-comment">/*
        * 開始と終了の値
        */</span>
-      <span class="hljs-keyword">from</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">from</span>: <span class="hljs-literal">null</span>,
       <span class="hljs-attr">to</span>: <span class="hljs-literal">null</span>,
       <span class="hljs-comment">/*
        * アニメーションのイージング
        */</span>
-      timing: <span class="hljs-string">'ease'</span>
+      <span class="hljs-attr">timing</span>: <span class="hljs-string">'ease'</span>
     }
   }
 }
-</code></pre><h2 id="dom-element">DOM Element/Node</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>boolean</code></td><td><code>false</code></td><td>このプロパティはオプションです。</td></tr></table></div><br><p>DOMまたはノードを指定します。</p><p>要素の位置とサイズは、<a href="#start-stop">開始位置と停止位置</a>を絶対置に変換するために使用します。
-相対置でアニメーションする場合に開始と停止の位置を取得するには、これしかありません。</p><p>絶対置を指定する場合は設定する必要はありません。</p><pre><code>{
+</code></pre>
+              <h2 id="dom-element">DOM Element/Node</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                    <td>このプロパティはオプションです。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>DOMまたはノードを指定します。</p>
+              <p>要素の位置とサイズは、<a href="#start-stop">開始位置と停止位置</a>を絶対置に変換するために使用します。
+                相対置でアニメーションする場合に開始と停止の位置を取得するには、これしかありません。
+              </p>
+              <p>絶対置を指定する場合は設定する必要はありません。</p>
+              <pre><code>{
   <span class="hljs-attr">elem</span>: <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.element'</span>)
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><br><h2 id="start-stop">開始＆停止位置</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>integer</code>, <code>string</code></td><td><code>null</code></td><td>このプロパティは必須です。</td></tr></table></div><br><p>basicScrillは、
-スクロール位置が<code>from</code>より上で、<code>to</code>より下の時に<a href="#props"><code>props</code></a>のアニメーションを開始します。
-絶対置または、相対置を指定することができます。</p><p>相対置の場合、<a href="#dom-element">DOM Element/Node</a>を指定する必要があります。
-<code>&lt;element&gt;-&lt;viewport&gt;</code>の前半の値は、要素の位置を表します。
-後半の値は、viewportの位置を表します。
-<code>from</code>に<code>middle-bottom</code>を指定した場合、
-指定した要素の中央(<code>middle</code>)がviewportの下部(<code>bottom</code>)に達した時にアニメーションが開始します。</p><p>既定の相対値：
-<code>top-top</code>、<code>top-middle</code>、<code>top-bottom</code>、<code>middle-top</code>、<code>middle-middle</code>、<code>middle-bottom</code>、<code>bottom-top</code>、<code>bottom-middle</code>、<code>bottom-bottom</code></p><pre><code>{
+}</code></pre><br>
+              <h2 id="start-stop">開始＆停止位置</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>integer</code>, <code>string</code></td>
+                    <td><code>null</code></td>
+                    <td>このプロパティは必須です。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>
+                basicScrillは、
+                スクロール位置が<code>from</code>より上で、<code>to</code>より下の時に<a href="#props"><code>props</code></a>のアニメーションを開始します。
+                絶対置または、相対置を指定することができます。
+              </p>
+              <p>相対置の場合、<a href="#dom-element">DOM Element/Node</a>を指定する必要があります。
+                <code>&lt;element&gt;-&lt;viewport&gt;</code>の前半の値は、要素の位置を表します。
+                後半の値は、viewportの位置を表します。
+                <code>from</code>に<code>middle-bottom</code>を指定した場合、
+                指定した要素の中央(<code>middle</code>)がviewportの下部(<code>bottom</code>)に達した時にアニメーションが開始します。
+              </p>
+              <p>
+                既定の相対値：
+                <code>top-top</code>、<code>top-middle</code>、<code>top-bottom</code>、<code>middle-top</code>、<code>middle-middle</code>、<code>middle-bottom</code>、<code>bottom-top</code>、<code>bottom-middle</code>、<code>bottom-bottom</code>
+              </p>
+              <pre><code>{
   <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-string">'0px'</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-string">'0px'</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-string">'100px'</span>,
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><pre><code>{
+}</code></pre>
+              <pre><code>{
   <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-number">0</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-number">360</span>,
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><pre><code>{
+}</code></pre>
+              <pre><code>{
   <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-string">'top-middle'</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-string">'top-middle'</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-string">'bottom-middle'</span>,
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><br><h2 id="direct-mode">ダイレクトモード</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>boolean</code></td><td><code>false</code></td><td>このプロパティはオプションです。</td></tr></table></div><br><p>basicScrollはデフォルトで全ての<a href="#props"><code>props</code></a>をグローバルに適用します。
-このプロパティを指定することで、
-インスタンスが追跡している要素だけではなく、
-CSSのどこでも変数を使うことができます。
-<code>direct</code>に<code>true</code>を指定した場合、
-全てのスタイルを直接<a href="#dom-element">DOM Element/Node</a>に適用します。
-<code>direct</code>に<code>true</code>を指定すると、
-CSS変数だけではなく、CSSプロパティもアニメーションさせることができます。</p><pre><code><span class="hljs-comment">&lt;!-- direct: false --&gt;</span>
+}</code></pre><br>
+              <h2 id="direct-mode">ダイレクトモード</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                    <td>このプロパティはオプションです。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>basicScrollはデフォルトで全ての<a href="#props"><code>props</code></a>をグローバルに適用します。
+                このプロパティを指定することで、
+                インスタンスが追跡している要素だけではなく、
+                CSSのどこでも変数を使うことができます。
+                <code>direct</code>に<code>true</code>を指定した場合、
+                全てのスタイルを直接<a href="#dom-element">DOM Element/Node</a>に適用します。
+                <code>direct</code>に<code>true</code>を指定すると、
+                CSS変数だけではなく、CSSプロパティもアニメーションさせることができます。
+              </p>
+              <pre><code><span class="hljs-comment">&lt;!-- direct: false --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"--name: 0;"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"element"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre><pre><code><span class="hljs-comment">&lt;!-- direct: true --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+              <pre><code><span class="hljs-comment">&lt;!-- direct: true --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"element"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"--name: 0;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre><br><h2 id="window-size">ウィンドウサイズ変更の検知</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>boolean</code></td><td><code>true</code></td><td>このプロパティはオプションです。</td></tr></table></div><br><p>basicScrollは、ウィンドウサイズが変更されると、
-自動で再計算し、インスタンスを更新します。
-独自に処理したい場合は、各インスタンスの追跡を個別に無効化することができます。 </p><p>メモ：basicScrollはウィンドウサイズのみを追跡します。
-サイトのサイズを変更する場合は、インスタンスを手動で再計算する必要があります。
-ページのレイアウトを変更する場合、インスタンスの更新をトリガーする必要があります。</p><pre><code><span class="hljs-keyword">const</span> instance = basicScroll.create({
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre><br>
+              <h2 id="window-size">ウィンドウサイズ変更の検知</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>true</code></td>
+                    <td>このプロパティはオプションです。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>
+                basicScrollは、ウィンドウサイズが変更されると、
+                自動で再計算し、インスタンスを更新します。
+                独自に処理したい場合は、各インスタンスの追跡を個別に無効化することができます。 
+              </p>
+              <p>
+                メモ：basicScrollはウィンドウサイズのみを追跡します。
+                サイトのサイズを変更する場合は、インスタンスを手動で再計算する必要があります。
+                ページのレイアウトを変更する場合、インスタンスの更新をトリガーする必要があります。
+              </p>
+              <pre><code><span class="hljs-keyword">const</span> instance = basicScroll.create({
   <span class="hljs-attr">elem</span>: <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.element'</span>),
   <span class="hljs-attr">from</span>: <span class="hljs-string">'top-bottom'</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-string">'bottom-top'</span>,
@@ -111,59 +283,173 @@ CSS変数だけではなく、CSSプロパティもアニメーションさせ�
   instance.update()
 
 }
-</code></pre><h2 id="callback">コールバック関数</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>function</code></td><td><code>() => {}</code></td><td>このプロパティはオプションです。</td></tr></table></div><br><ul><li><code>inside</code>は、
-ユーザーがスクロールし、viewportが<a href="#start-stop">開始位置と停止位置</a>の範囲内にある時に実行します。</li><li><code>outside</code>は、
-ユーザーがスクロールし、viewportが<a href="#start-stop">開始位置と停止位置</a>の範囲外にある時に実行します。</li></ul><p>両方とも<code>instance</code>(現在のインスタンス)、<code>percentage</code>(%)、<code>props</code>(計算済みのプロパティ)を受け取ります。</p><ul><li><code>percentage</code>が<code>< 0%</code> : スクロール位置は<code>from</code>より下です。</li><li><code>percentage</code>が<code>= 0%</code> : スクロール位置は<code>from</code>です。</li><li><code>percentage</code>が<code>= 100%</code> : スクロール位置は<code>to</code>です。</li><li><code>percentage</code>が<code>> 100%</code> : スクロール位置は<code>from</code>より上です。</li></ul><pre><code>{
+</code></pre>
+              <h2 id="callback">コールバック関数</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>function</code></td>
+                    <td><code>() => {}</code></td>
+                    <td>このプロパティはオプションです。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <ul>
+                <li><code>inside</code>は、
+                  ユーザーがスクロールし、viewportが<a href="#start-stop">開始位置と停止位置</a>の範囲内にある時に実行します。
+                </li>
+                <li><code>outside</code>は、
+                  ユーザーがスクロールし、viewportが<a href="#start-stop">開始位置と停止位置</a>の範囲外にある時に実行します。
+                </li>
+              </ul>
+              <p>両方とも<code>instance</code>(現在のインスタンス)、<code>percentage</code>(%)、<code>props</code>(計算済みのプロパティ)を受け取ります。</p>
+              <ul>
+                <li><code>percentage</code>が<code>< 0%</code> : スクロール位置は<code>from</code>より下です。</li>
+                <li><code>percentage</code>が<code>= 0%</code> : スクロール位置は<code>from</code>です。</li>
+                <li><code>percentage</code>が<code>= 100%</code> : スクロール位置は<code>to</code>です。</li>
+                <li><code>percentage</code>が<code>> 100%</code> : スクロール位置は<code>from</code>より上です。</li>
+              </ul>
+              <pre><code>{
   <span class="hljs-comment">/* ... */</span>
-  inside: <span class="hljs-function">(<span class="hljs-params">instance, percentage, props</span>) =&gt;</span> {},
+  <span class="hljs-attr">inside</span>: <span class="hljs-function">(<span class="hljs-params">instance, percentage, props</span>) =&gt;</span> {},
   <span class="hljs-attr">outside</span>: <span class="hljs-function">(<span class="hljs-params">instance, percentage, props</span>) =&gt;</span> {},
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><br><h2 id="props">Props</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>object</code></td><td><code>{}</code></td><td>このプロパティはオプションです。</td></tr></table></div><br><p>スクロール位置が変更された時にアニメーションする値。</p><p>オブジェクトの各propは、
-CSSプロパティまたは、CSSカスタムプロパティ(CSS変数)を表します。
-CSSカスタムプロパティは常に<code>--</code>(2つのダッシュ)で始まります。
-<code>--name</code>というpropは、CSSでは<code>var(--name)</code>でアクセスすることができます。</p><p>詳細は、<a href="https://developer.mozilla.org/ja/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSSカスタムプロパティ</a>を参照してください。</p><pre><code>{
+}</code></pre><br>
+              <h2 id="props">Props</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>object</code></td>
+                    <td><code>{}</code></td>
+                    <td>このプロパティはオプションです。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>スクロール位置が変更された時にアニメーションする値。</p>
+              <p>
+                オブジェクトの各propは、
+                CSSプロパティまたは、CSSカスタムプロパティ(CSS変数)を表します。
+                CSSカスタムプロパティは常に<code>--</code>(2つのダッシュ)で始まります。
+                <code>--name</code>というpropは、CSSでは<code>var(--name)</code>でアクセスすることができます。
+              </p>
+              <p>詳細は、<a href="https://developer.mozilla.org/ja/docs/Web/CSS/Using_CSS_variables" target="_blank" rel="noopener noreferrer">CSSカスタムプロパティ</a>を参照してください。</p>
+              <pre><code>{
   <span class="hljs-comment">/* ... */</span>
-  props: {
+  <span class="hljs-attr">props</span>: {
     <span class="hljs-string">'--one-variable'</span>: { <span class="hljs-comment">/* ... */</span> },
     <span class="hljs-string">'--another-variable'</span>: { <span class="hljs-comment">/* ... */</span> }
   }
-}</code></pre><br><h2 id="start-end">開始と終了の値</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>integer</code>, <code>string</code></td><td><code>null</code></td><td>このプロパティは必須です。</td></tr></table></div><br><p>全種類の単位で動作します。
-<code>from</code>に単位が指定されていない場合、
-<code>to</code>の単位を使います。</p><pre><code><span class="hljs-string">'--name'</span>: {
+}</code></pre><br>
+              <h2 id="start-end">開始と終了の値</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>integer</code>, <code>string</code></td>
+                    <td><code>null</code></td>
+                    <td>このプロパティは必須です。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>
+                全種類の単位で動作します。
+                <code>from</code>に単位が指定されていない場合、
+                <code>to</code>の単位を使います。
+              </p>
+              <pre><code><span class="hljs-string">'--name'</span>: {
   <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-string">'0'</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-string">'0'</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-string">'100px'</span>,
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><pre><code><span class="hljs-string">'--name'</span>: {
+}</code></pre>
+              <pre><code><span class="hljs-string">'--name'</span>: {
   <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-string">'50%'</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-string">'50%'</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-string">'100%'</span>,
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><pre><code><span class="hljs-string">'--name'</span>: {
+}</code></pre>
+              <pre><code><span class="hljs-string">'--name'</span>: {
   <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-keyword">from</span>: <span class="hljs-string">'0'</span>,
+  <span class="hljs-attr">from</span>: <span class="hljs-string">'0'</span>,
   <span class="hljs-attr">to</span>: <span class="hljs-string">'1turn'</span>,
   <span class="hljs-comment">/* ... */</span>
-}</code></pre><br><h2 id="animation">アニメーションのイージング</h2><div class="table-box"><table class="my-table"><tr><th>type</th><th>初期値</th><th>オプション</th></tr><tr><td><code>string</code>, <code>function</code></td><td><code>linear</code></td><td>このプロパティはオプションです。</td></tr></table></div><br><p>既定のイージングまたは、カスタム関数を指定します。
-イージング関数は引数として、
-<code>0</code>から<code>1</code>(アニメーションがどの程度完了したかを示すパーセンテージ)の間の値を受け取ります。
-イージング関数は<code>0</code>から<code>1</code>の範囲の値を返すべきですが、
-タイミングによっては<code>0未満</code>や、<code>1以上</code>でも構いません。</p><p>既定のイージング：
-<code>backInOut</code>、<code>backIn</code>、<code>backOut</code>、
-<code>bounceInOut</code>、<code>bounceIn</code>、<code>bounceOut</code>、
-<code>circInOut</code>、<code>circIn</code>、<code>circOut</code>、
-<code>cubicInOut</code>、<code>cubicIn</code>、<code>cubicOut</code>、
-<code>elasticInOut</code>、<code>elasticIn</code>、<code>elasticOut</code>、
-<code>expoInOut</code>、<code>expoIn</code>、<code>expoOut</code>、
-<code>linear</code>、
-<code>quadInOut</code>、<code>quadIn</code>、<code>quadOut</code>、
-<code>quartInOut</code>、<code>quartIn</code>、<code>quartOut</code>、
-<code>quintInOut</code>、<code>quintIn</code>、<code>quintOut</code>、
-<code>sineInOut</code>、<code>sineIn</code>、<code>sineOut</code></p><pre><code><span class="hljs-string">'--name'</span>: {
+}</code></pre><br>
+              <h2 id="animation">アニメーションのイージング</h2>
+              <div class="table-box">
+                <table class="my-table">
+                  <tr>
+                    <th>type</th>
+                    <th>初期値</th>
+                    <th>オプション</th>
+                  </tr>
+                  <tr>
+                    <td><code>string</code>, <code>function</code></td>
+                    <td><code>linear</code></td>
+                    <td>このプロパティはオプションです。</td>
+                  </tr>
+                </table>
+              </div><br>
+              <p>
+                既定のイージングまたは、カスタム関数を指定します。
+                イージング関数は引数として、
+                <code>0</code>から<code>1</code>(アニメーションがどの程度完了したかを示すパーセンテージ)の間の値を受け取ります。
+                イージング関数は<code>0</code>から<code>1</code>の範囲の値を返すべきですが、
+                タイミングによっては<code>0未満</code>や、<code>1以上</code>でも構いません。
+              </p>
+              <p>
+                既定のイージング：
+                <code>backInOut</code>、<code>backIn</code>、<code>backOut</code>、
+                <code>bounceInOut</code>、<code>bounceIn</code>、<code>bounceOut</code>、
+                <code>circInOut</code>、<code>circIn</code>、<code>circOut</code>、
+                <code>cubicInOut</code>、<code>cubicIn</code>、<code>cubicOut</code>、
+                <code>elasticInOut</code>、<code>elasticIn</code>、<code>elasticOut</code>、
+                <code>expoInOut</code>、<code>expoIn</code>、<code>expoOut</code>、
+                <code>linear</code>、
+                <code>quadInOut</code>、<code>quadIn</code>、<code>quadOut</code>、
+                <code>quartInOut</code>、<code>quartIn</code>、<code>quartOut</code>、
+                <code>quintInOut</code>、<code>quintIn</code>、<code>quintOut</code>、
+                <code>sineInOut</code>、<code>sineIn</code>、<code>sineOut</code>
+              </p>
+              <pre><code><span class="hljs-string">'--name'</span>: {
   <span class="hljs-comment">/* ... */</span>
-  timing: <span class="hljs-string">'circInOut'</span>
-}</code></pre><pre><code><span class="hljs-string">'--name'</span>: {
+  <span class="hljs-attr">timing</span>: <span class="hljs-string">'circInOut'</span>
+}</code></pre>
+              <pre><code><span class="hljs-string">'--name'</span>: {
   <span class="hljs-comment">/* ... */</span>
-  timing: <span class="hljs-function">(<span class="hljs-params">t</span>) =&gt;</span> t * t
-}</code></pre><br><br><div class="license"><p>&copy; 2018
- Tobias Reich Released under the <a href="https://github.com/electerious/basicScroll/blob/master/LICENSE">MIT license</a></p><p>このコンテンツはTobias Reich(electerious)による<a href="https://github.com/electerious/basicScroll">basicScrollドキュメント</a>を翻訳/改変したものです。</p></div></div></div></div></div><footer><span> &copy; <span id="copy_year">2017</span> tobijibu</span></footer></div><noscript id="deferred-styles"><link href="./css/lazy.css" rel="stylesheet"></noscript><script src="./js/main.js" defer></script><script src="./js/basicScroll.min.js"></script><div id="src" hidden></div></body></html>
+  <span class="hljs-attr">timing</span>: <span class="hljs-function">(<span class="hljs-params">t</span>) =&gt;</span> t * t
+}</code></pre><br><br>
+              <div class="license">
+                <p>
+                  &copy; 2018
+                   Tobias Reich Released under the <a href="https://github.com/electerious/basicScroll/blob/master/LICENSE">MIT license</a>
+                </p>
+                <p>このコンテンツはTobias Reich(electerious)による<a href="https://github.com/electerious/basicScroll">basicScrollドキュメント</a>を翻訳/改変したものです。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer><span>&copy; <span id="copy_year">2017</span> tobijibu</span></footer>
+    </div>
+    <noscript id="deferred-styles">
+      <link href="./css/lazy.css" rel="stylesheet">
+    </noscript>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/basicScroll.min.js"></script>
+    <div id="src" hidden></div>
+  </body>
+</html>
